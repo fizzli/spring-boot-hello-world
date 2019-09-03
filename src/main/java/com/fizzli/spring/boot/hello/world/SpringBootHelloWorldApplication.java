@@ -15,6 +15,7 @@ public class SpringBootHelloWorldApplication {
 
         SpringApplication.run(SpringBootHelloWorldApplication.class, args);
 
+        //反射
         Class clz = Class.forName("com.fizzli.spring.boot.hello.world.entity.Phone");
         Phone phone = (Phone) clz.newInstance();
 
@@ -23,6 +24,10 @@ public class SpringBootHelloWorldApplication {
 
         Method getNameMethod = clz.getMethod("getName");
         System.out.println(getNameMethod.invoke(phone));
+
+        Class<Phone> phoneClass = Phone.class;
+        Phone phone1 = phoneClass.newInstance();
+        Method setName = phoneClass.getMethod("setName", String.class);
 
 
     }
